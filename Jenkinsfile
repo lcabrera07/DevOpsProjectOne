@@ -7,14 +7,13 @@ pipeline {
         
     stage('Git') {
       steps {
-        git 'https://github.com/lcabrera07/DevOpsProjectOne.git'
+        git (['https://github.com/lcabrera07/DevOpsProjectOne.git', branch: 'main', credentialsId: 'GitHubSSH'])
       }
     }
      
     stage('Build') {
       steps {
         sh 'npm install'
-         sh '<<Build Command>>'
       }
     }  
     
