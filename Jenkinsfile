@@ -7,7 +7,7 @@ pipeline {
         
     stage('Git') {
       steps {
-        git (['https://github.com/lcabrera07/DevOpsProjectOne.git', branch: 'main', credentialsId: 'GitHubSSH'])
+        git ([url: 'https://github.com/lcabrera07/DevOpsProjectOne.git', branch: 'main', credentialsId: 'GitHubSSH'])
       }
     }
      
