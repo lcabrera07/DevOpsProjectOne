@@ -35,12 +35,12 @@ pipeline {
       steps{
         script {
           docker.withRegistry('https://registry.hub.docker.com/repository/docker/lcabrera07/devops_course_projects', 'DockerHubCredentials') {
-            dockerImage.push()
+            dockerImage.push("$BUILD_NUMBER")
+            dockerImage.push('latest')
           }
         }
       }
     }
-
     
   }
 }
