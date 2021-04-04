@@ -34,7 +34,7 @@ pipeline {
     stage('Deploy Image') {
       steps{
         script {
-          docker.withRegistry('https://hub.docker.com/repository/docker/lcabrera07/devops_course_projects', 'DockerHubCredentials') {
+          docker.withRegistry('lcabrera07/devops_course_projects', 'DockerHubCredentials') {
             dockerImage.push()
           }
         }
