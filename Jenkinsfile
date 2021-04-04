@@ -1,4 +1,8 @@
 pipeline {
+  environment {
+    registry = "lcabrera07/devops_course_projects"
+  }
+  
   agent any
     
   tools {nodejs "NodeJS"}
@@ -26,7 +30,7 @@ pipeline {
     stage('Building Docker Image') {
       steps {
         script {
-          dockerImage = docker.build "myapplication" + ":$BUILD_NUMBER"
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
     }
@@ -34,7 +38,7 @@ pipeline {
     stage('Deploy Image') {
       steps{
         script {
-          docker.withRegistry('https://registry.hub.docker.com/repository/docker/lcabrera07/devops_course_projects', 'DockerHubCredentials') {
+          docker.withRegistry('', 'DockerHubCredentials') {
             dockerImage.push("$BUILD_NUMBER")
             dockerImage.push('latest')
           }
